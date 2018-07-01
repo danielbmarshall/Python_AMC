@@ -1,5 +1,5 @@
 # Python_AMC
-A Python Script used to call the AMC Groovy script from Deluge Execute Plugin on Windows
+A Python Script used to call the Filebot AMC Groovy script from Deluge Execute Plugin on Windows
 
 
 
