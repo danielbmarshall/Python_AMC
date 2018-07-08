@@ -1,8 +1,10 @@
 #!C:\Python27\pythonw.exe
 #
-# process_torrent.py version 0.1
+# process_torrent.py version 0.2
 #
-# Copyright (c) 2015 scudstone
+# Copyright (c) 2018 danielbmarshall
+# Original copyright and credit goes to Filebot forums user "scudstone" 2015.
+# See: https://forum.deluge-torrent.org/viewtopic.php?f=9&t=40649&start=20#p213779
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +40,11 @@ filepath = argv[3]
 ################################################
 
 # If you want to send notifications to growl, you must install gntp
-# See: https://pypi.python.org/pypi/gntp
+# Installing Python and setting Path Variable See: 
+# https://www.londonappdeveloper.com/setting-up-your-windows-10-system-for-python-development-pydev-eclipse-python/
+# Installing GNTP See: https://pypi.python.org/pypi/gntp
+# Installing PIP See: https://pypi.org/project/pip/
+# Installing Growl for Windows See: http://www.growlforwindows.com/gfw/
 send_growl_notifications = True
 
 # You should be able to leave this as-is unless your growl
@@ -50,7 +56,7 @@ growl_password = ""
 # as needed.  See http://www.filebot.net/forums/viewtopic.php?t=215#p1561
 # for more information on available options
 filebot_cmd = [
-    r'C:\Users\danie\AppData\Local\Microsoft\WindowsApps\filebot.exe',
+    r'C:\Users\<REPLACE WITH WINDOWS ACCOUNT NAME>\AppData\Local\Microsoft\WindowsApps\filebot.exe',
 
     # I recommend replacing 'fn:amc' with the path to a locally saved copy of
     # amc.groovy. 'fn:amc' downloads the script every time you run filebot.exe
@@ -60,25 +66,27 @@ filebot_cmd = [
     '-script', 'fn:amc',
 	    
     # If you end your path with a slash, then you must escape it with a second 
-    # slash i.e. 'D:\\' instead of 'D:\' 
+    # slash i.e. 'X:\\' instead of 'X:\' 
     '--output', r'X:\\',
 
     # Save log files to same directory where this script file is located
     '--log-file', os.path.join(os.path.dirname(os.path.realpath(__file__)), 'amc.log'),
-    '--action', 'move',
+    '--action', 'copy',
     '--conflict', 'auto',
     '-non-strict',
     '--def', 'artwork=y',
 	'ut_dir={0}\{1}'.format(filepath, filename),
     'ut_kind=multi',
     'ut_title={0}'.format(filename),
-	'--def', 'movieFormat=x:/Movies2/{ny}/{fn}', 'seriesFormat=x:/tv2/{n}/{\'Season \'+s}/{n}.{s00e00}.{t}',
+	# Specify Movie and TV Series Formats and copy/move locations
+	'--def', 'movieFormat=x:/Movies2/{NY}/{n.space(\'.\')} ({y})', 'seriesFormat=x:/tv2/{n}/{\'Season \'+s}/{n}.{s00e00}.{t}',
 	'--def', 'subtitles=en',
 	'--def', 'deleteAfterExtract=y',
 	'--def', 'clean=y',
 
-    # If you don't have Plex, remove this line
-    '--def', 'plex=127.0.0.1'
+    # If you don't have Plex, remove this option
+	# Obtaining your Plex Token See: https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/
+    '--def', 'plex=localhost:THIS IS YOUR PLEX TOKEN'
     ]
 
 ################################################
