@@ -75,17 +75,17 @@ filebot_cmd = [
     '--conflict', 'auto',
     '-non-strict',
     '--def', 'artwork=y',
-	'ut_dir={0}\{1}'.format(filepath, filename),
+    'ut_dir={0}\{1}'.format(filepath, filename),
     'ut_kind=multi',
     'ut_title={0}'.format(filename),
-	# Specify Movie and TV Series Renaming Formats and copy/move locations
-	'--def', 'movieFormat=x:/Movies2/{NY}/{n.space(\'.\')} ({y})', 'seriesFormat=x:/tv2/{n}/{\'Season \'+s}/{n}.{s00e00}.{t}',
-	'--def', 'subtitles=en',
-	'--def', 'deleteAfterExtract=y',
-	'--def', 'clean=y',
+    # Specify Movie and TV Series Renaming Formats and copy/move locations
+    '--def', 'movieFormat=x:/Movies2/{NY}/{n.space(\'.\')} ({y})', 'seriesFormat=x:/tv2/{n}/{\'Season \'+s}/{n}.{s00e00}.{t}',
+    '--def', 'subtitles=en',
+    '--def', 'deleteAfterExtract=y',
+    '--def', 'clean=y',
 
     # If you don't have Plex, remove this option
-	# Obtaining your Plex Token See: https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/
+    # Obtaining your Plex Token See: https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/
     '--def', 'plex=localhost:THIS IS YOUR PLEX TOKEN'
     ]
 
