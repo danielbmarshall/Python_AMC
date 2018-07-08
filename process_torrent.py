@@ -55,6 +55,8 @@ growl_password = ""
 # This is the filebot command that is executed. You can tweak the options
 # as needed.  See http://www.filebot.net/forums/viewtopic.php?t=215#p1561
 # for more information on available options
+# To run the move script automatically in Deluge, you must install the "Execute" plugin, and set the path to the process_torrent.py script
+# See: https://github.com/ultnrg/deluge-execute
 filebot_cmd = [
     r'C:\Users\<REPLACE WITH WINDOWS ACCOUNT NAME>\AppData\Local\Microsoft\WindowsApps\filebot.exe',
 
