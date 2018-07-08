@@ -78,7 +78,7 @@ filebot_cmd = [
 	'ut_dir={0}\{1}'.format(filepath, filename),
     'ut_kind=multi',
     'ut_title={0}'.format(filename),
-	# Specify Movie and TV Series Formats and copy/move locations
+	# Specify Movie and TV Series Renaming Formats and copy/move locations
 	'--def', 'movieFormat=x:/Movies2/{NY}/{n.space(\'.\')} ({y})', 'seriesFormat=x:/tv2/{n}/{\'Season \'+s}/{n}.{s00e00}.{t}',
 	'--def', 'subtitles=en',
 	'--def', 'deleteAfterExtract=y',
